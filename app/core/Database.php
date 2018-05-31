@@ -9,7 +9,7 @@
 				$host = 'localhost',
                 $username = 'root',
                 $pass = 'root',
-                $dbname = 'user';
+                $dbname = 'tutorial';
 
 	    public function __construct()
 	    {
@@ -40,6 +40,30 @@
 	    }
 
 	    // fungsi2 CRUD
+
+	    public function insert($table, $array = [])
+	    {
+	      	//methode untuk mengambil key(kolom) dari arrray dan di pisah dengan koma oleh methode implode()
+		    $column = implode(",", array_keys($array));
+		    //mengambil nilai
+
+		    $i = 0;
+		    $nilaiArrays = array();
+		    foreach ($array as $key => $nilai) {
+		    	if (is_int($nilai)) {
+		    		$nilaiArrays[$i] = $nilai;
+		    	}else {
+		    		$nilaiArrays[$i] = "'". $nilai ."'";
+		     	}
+		     	$i++;
+			}
+
+			//methode untuk mengambil key(kolom) dari arrray dan di pisah dengan koma oleh methode implode()
+		    $nilai = implode(",",$nilaiArrays);
+		    $query = "INSERT INTO $table ($column) VALUES ($nilai)";
+
+		    return $this->mysqli->query($query);
+		}
 	}
 
 ?>
