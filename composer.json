@@ -1,0 +1,20 @@
+{
+    "name": "sideproject/sheena",
+    "authors": [
+        {
+            "name": "sheenazien8",
+            "email": "sheenazien08@gmail.com"
+        }
+    ],
+    "require": {
+    	"illuminate/database": "^5.6",
+        "guzzle/guzzle": "^3.9",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload":{
+        "classmap" :[
+            "app/models"
+        ]
+    }
+
+}
