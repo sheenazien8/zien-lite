@@ -46,7 +46,6 @@
 	      	//methode untuk mengambil key(kolom) dari arrray dan di pisah dengan koma oleh methode implode()
 		    $column = implode(",", array_keys($array));
 		    //mengambil nilai
-
 		    $i = 0;
 		    $nilaiArrays = array();
 		    foreach ($array as $key => $nilai) {
@@ -63,6 +62,38 @@
 		    $query = "INSERT INTO $table ($column) VALUES ($nilai)";
 
 		    return $this->mysqli->query($query);
+		}
+
+		public function edit($table, $id)
+		{
+			$reply = [];
+			$query = "SELECT * FROM $table WHERE id = '$id'";
+			$result = $this->mysqli->query($query);
+
+	    	foreach ($result as $value)
+	    		$reply[] =$value;
+
+	    	return $reply;
+		}
+		public function update($table, $array = [],$id)
+		{
+			$column = array_keys($array);
+			//mengambil nilai
+			$i = 0;
+			$nilai = array_values($array);
+			foreach ($array as $value) {
+				$query = "UPDATE $table SET $column[$i] = '$nilai[$i]'  WHERE id = '$id'";
+				$i++;
+			}
+			return $this->mysqli->query($query);
+		}
+
+		public function delete($table,$id)
+		{
+			$query = "DELETE FROM $table WHERE id = '$id'";
+			$this->mysqli->query($query);
+
+			return $this->mysqli->query($query);
 		}
 	}
 
