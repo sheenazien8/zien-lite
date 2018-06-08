@@ -1,15 +1,12 @@
 <?php
-	/**
-	 * summary
-	 */
 	class Database
 	{
 		private static $_instace = null;
 		private $mysqli,
 				$host = 'localhost',
-                $username = 'root',
-                $pass = 'root',
-                $dbname = 'tutorial';
+                $username = '',
+                $pass = '',
+                $dbname = '';
 
 	    public function __construct()
 	    {
@@ -26,6 +23,24 @@
 	    	}
 	    	return self::$_instace;
 	    }
+	    
+	    public function sql($data)
+	    {	
+	    	$reply= [];
+	    	$query = $data;
+	    	$result = $this->mysqli->query($query);
+	    	foreach ($result as $value)
+	    		$reply[] =$value;
+	    	return $reply;
+	    }
+	    public function assoc($data)
+	    {	
+	    	$query = $data;
+	    	$result = $this->mysqli->query($query);
+	    	while ($row = $result->fetch_assoc()) {
+	    	    return $row;
+	    	}
+	    }
 
 	    public function index($table)
 	    {
@@ -35,10 +50,8 @@
 
 	    	foreach ($result as $value)
 	    		$reply[] =$value;
-
 	    	return $reply;
 	    }
-
 	    // fungsi2 CRUD
 
 	    public function insert($table, $array = [])
@@ -46,6 +59,7 @@
 	      	//methode untuk mengambil key(kolom) dari arrray dan di pisah dengan koma oleh methode implode()
 		    $column = implode(",", array_keys($array));
 		    //mengambil nilai
+		    
 		    $i = 0;
 		    $nilaiArrays = array();
 		    foreach ($array as $key => $nilai) {
@@ -60,7 +74,7 @@
 			//methode untuk mengambil key(kolom) dari arrray dan di pisah dengan koma oleh methode implode()
 		    $nilai = implode(",",$nilaiArrays);
 		    $query = "INSERT INTO $table ($column) VALUES ($nilai)";
-
+		    
 		    return $this->mysqli->query($query);
 		}
 
@@ -69,7 +83,6 @@
 			$reply = [];
 			$query = "SELECT * FROM $table WHERE id = '$id'";
 			$result = $this->mysqli->query($query);
-
 	    	foreach ($result as $value)
 	    		$reply[] =$value;
 
@@ -84,17 +97,54 @@
 			foreach ($array as $value) {
 				$query = "UPDATE $table SET $column[$i] = '$nilai[$i]'  WHERE id = '$id'";
 				$i++;
+				$this->mysqli->query($query);
 			}
-			return $this->mysqli->query($query);
+			return $this;
 		}
 
 		public function delete($table,$id)
 		{
 			$query = "DELETE FROM $table WHERE id = '$id'";
-			$this->mysqli->query($query);
-
 			return $this->mysqli->query($query);
 		}
+
+		public function where($data)
+		{
+			$reply= [];
+			$query = $data;
+			$result = $this->mysqli->query($query);
+			
+	    	foreach ($result as $value)
+	    		$reply[] =$value;
+	    	return $reply;
+		}
+
+		public function whereStatus($table,$where,$data)
+	    {
+	    	$reply= [];
+	    	$query = "SELECT * FROM $table WHERE $where = '$data'";
+	    	$result = $this->mysqli->query($query);
+	    	foreach ($result as $value)
+	    		$reply[] =$value;
+	    	return $reply;
+	    }
+
+	    public function getInfo($table,$column,$value)
+	    {
+			if (!is_int($value)) {
+				$value = "'". $value."'";
+			}else {
+				$value = $value = $value;
+			}
+			//memnilih table dari database
+			$query = "SELECT * FROM $table WHERE $column = $value";
+			//eksekusi query
+			$hasil = $this->mysqli->query($query);
+			//mengambil isi data dari database
+			while ($row = $hasil->fetch_assoc()) {
+				return $row;
+			}
+	    }
 	}
 
 ?>
