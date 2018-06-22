@@ -11,20 +11,6 @@
 			// mengambil nilai object
 			return new $file();
 		}
-		public function request($name)
-		{
-			if ($_POST[$name]) {
-				return $_POST[$name];
-			}elseif ($_GET[$name]) {
-				return $_POST[$name];
-			}
-			return false;
-		}
-
-		public function back()
-		{
-			return header('Location: ../');
-		}
 
 	}
 ?>
