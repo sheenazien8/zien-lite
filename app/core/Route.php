@@ -14,13 +14,13 @@
 				$url = "home";
 			}
 			// ngechek file controller
-			if (file_exists('../app/controllers/'.$url[0].'.php')) {
+			if (file_exists('app/controllers/'.$url[0].'.php')) {
 				$this->controller = $url[0];
 			}else {
-				return require_once '../app/views/error/404.php';;
+				return require_once 'app/views/error/404.php';;
 			}
 
-			require_once '../app/controllers/'. $this->controller .'.php';
+			require_once 'app/controllers/'. $this->controller .'.php';
 			$this->controller= new $this->controller;
 
 			// ngecheck method
