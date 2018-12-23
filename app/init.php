@@ -3,8 +3,5 @@
 
   spl_autoload_register(function($class)
   {
-    require_once 'core/'.$class.'.php';
+    require_once 'Core/'.$class.'.php';
   });
-
-  $GLOBALS['path'] = '/crud-oop/public/';
-

@@ -1,0 +1,17 @@
+{
+    "name": "zien/zienn-framework",
+    "description": "Development",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sheenazien",
+            "email": "sheenazien08@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload":{
+        "psr-4":{
+            "App\\": "app/"
+        }
+    }
+}
