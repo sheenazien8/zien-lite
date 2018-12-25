@@ -1,6 +1,4 @@
 <?php
     require_once 'config/route.php';
-	$route = new Route();
-    $route->uri('/', 'HomeController', 'index');
-    $route->uri('/home', 'HomeController', 'oke');
+    require_once 'routes/web.php';
 ?>

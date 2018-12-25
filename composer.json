@@ -10,8 +10,10 @@
     ],
     "require": {},
     "autoload":{
-        "psr-4":{
-            "App\\": "app/"
+        "files" : ["config/helpers.php"],
+        "classmap" : ["config/route.php"],
+        "psr-4" : {
+            "App\\" : "app/"
         }
     }
 }

@@ -1,0 +1,7 @@
+php_value display_errors 1
+Options -MultiViews
+RewriteEngine On
+RewriteBase /kasir-klontong/public/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
