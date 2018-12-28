@@ -7,7 +7,7 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-        echo 'ok';
+        return $this->view('home');
 	}
 
     public function store()

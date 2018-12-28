@@ -1,5 +1,4 @@
 <?php
-require_once 'request.php';
 class Route
 {
 	private $request;
@@ -9,6 +8,8 @@ class Route
 	private $require;
 	private $require_once;
 	private $supportedHttpMethods = ["GET","POST"];
+
+
 	function __construct()
 	{
 		require_once __DIR__."/../app/init.php";
@@ -18,6 +19,7 @@ class Route
 
 	function __call($name, $args)
 	{
+		$this->supportedHttpMethods;
 		$arguments = explode('@', $args[1]);
 		$arguments = [$args[0], $arguments[0], $arguments[1]];
 		list($route, $controller ,$method) = $arguments;
@@ -26,9 +28,13 @@ class Route
 
 	public function __init($route, $controller, $method)
 	{
-		$this->controller($controller);
-		$this->method($method);
-		$this->route($route);
+		if ($this->requestUri != $route) {
+			return view('404');
+		}else {
+			$this->controller($controller);
+			$this->method($method);
+			$this->route($route);
+		}
 	}
 
 	private function bootstrapSelf()
@@ -58,6 +64,8 @@ class Route
 			} catch (Exception $e) {
 				$e->getMessage();
 			}
+		}else {
+
 		}
 	}
 
@@ -79,56 +87,16 @@ class Route
 
 	public function resolve()
 	{
-		require_once $this->require_once;
-		$this->controller = "App\Controllers\\".$this->controller;
-		call_user_func_array([new $this->controller, $this->method], ['oke']);
+		if ($this->controller) {
+			require_once $this->require_once;
+			$this->controller = "App\Controllers\\".$this->controller;
+			$this->params = [];
+			call_user_func_array([new $this->controller, $this->method], $this->params);
+		}
 	}
 	public function __destruct()
 	{
 		$this->resolve();
-	}
-	// function resolve()
-	// {
-	// 	dump('resolve', $this->request->requestMethod);
-	// 	$methodDictionary = $this->{strtolower($this->request->requestMethod)};
-	// 	$formatedRoute = $this->formatRoute($this->request->requestUri);
-	// 	$method = $methodDictionary[$formatedRoute];
-	// 	if(is_null($method)){
-	// 		$this->defaultRequestHandler();
-
-	// 		return;
-	// 	}
-	// 	dump((array)$method, (array)$this->request);
-	// 	echo call_user_func_array($method, array($this->request));
-	// }
-	public function autoload()
-	{
-	}
-
-	public function uri($url, $controller, $method, $name = null)
-	{
-		$uri = urldecode(
-			parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
-		);
-		$explode = explode("/", filter_var($_SERVER['REQUEST_URI']));
-		if ($uri == $url['url']) {
-			try {
-				$this->controller = $controller;
-				if (file_exists(__DIR__.'/../app/controllers/'.$this->controller.'.php')) {
-					$this->controller = $controller;
-				}else {
-					return require_once __DIR__.'/../app/views/error/404.php';
-				}
-				require_once __DIR__."/../app/controllers/".$this->controller.'.php';
-				$this->controller = new $this->controller;
-				$this->method = $method;
-				$this->parameter;
-				call_user_func_array([$this->controller,$this->method],$this->parameter);
-				return true;
-			} catch (Exception $e) {
-				die('page not found');
-			}
-		}
 	}
 }
 $routes = new Route();
