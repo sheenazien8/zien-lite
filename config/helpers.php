@@ -44,7 +44,7 @@ if (!function_exists('dump')) {
 if (!function_exists('view')) {
     function view($file, $data = [])
     {
-        require_once 'resources/views/'.$file.'.html';
+        require_once '../resources/views/'.$file.'.html';
     }
 }
 

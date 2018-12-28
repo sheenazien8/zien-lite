@@ -1,13 +1,13 @@
 <?php
 namespace App\Controllers;
 
-use App\Core\Controller;
+use ZL\Controller;
 
 class HomeController extends Controller
 {
 	public function index()
 	{
-        return $this->view('home');
+        return view('home');
 	}
 
     public function store()
