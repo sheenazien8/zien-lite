@@ -1,5 +1,6 @@
 <?php
-	require '../app/init.php';
-    require '../vendor/autoload.php';
-	$route = new Route();
-?>
+/*
+* Zien lite
+*/
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../config/router.php';
