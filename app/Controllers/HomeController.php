@@ -8,8 +8,6 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-        $home = new Home;
-
         return view('home', compact('test'));
 	}
 }
