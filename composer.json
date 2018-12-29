@@ -25,16 +25,8 @@
     },
     "repositories": [
         {
-            "type":"package",
-                "package": {
-                    "name": "zien-lite",
-                    "version":"master",
-                    "source": {
-                        "url": "https://github.com/sheenazien8/zien-lite.git",
-                        "type": "git",
-                        "reference":"master"
-                    }
-                }
+            "type": "vcs",
+            "url": "https://github.com/sheenazien8/zien-lite"
         }
     ],
     "minimum-stability": "dev",
