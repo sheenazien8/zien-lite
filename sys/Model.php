@@ -12,13 +12,13 @@ class Model
     private $dbname;
     private $dbuser;
     private $dbpass;
-    private $dsn;
+    private $driveHostDbName;
 
     public function __construct()
     {
         $this->connect();
     }
-    private function setup()
+    private function config()
     {
         require __DIR__ . '/../config/app.php';
         if ($config['database']['connection']) {
@@ -27,15 +27,15 @@ class Model
             $this->dbname = $config['database']['dbname'];
             $this->dbuser = $config['database']['username'];
             $this->dbpass = $config['database']['password'];
-            $this->dsn = "$this->driver:host=$this->host;dbname=$this->dbname;charset=utf8";
+            $this->driveHostDbName = "$this->driver:host=$this->host;dbname=$this->dbname;charset=utf8";
             return true;
         }
         return false;
     }
     private function connect()
     {
-        if ($this->setup()) {
-            $this->db = new Database($this->dsn, $this->dbuser, $this->dbpass);
+        if ($this->config()) {
+            $this->db = new Database($this->driveHostDbName, $this->dbuser, $this->dbpass);
         }
     }
 }

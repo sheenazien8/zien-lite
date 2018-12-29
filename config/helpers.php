@@ -44,7 +44,23 @@ if (!function_exists('dump')) {
 if (!function_exists('view')) {
     function view($file, $data = [])
     {
-        require_once '../resources/views/'.$file.'.html';
+        $blade = new Jenssegers\Blade\Blade('../resources/views/', '../public/storage/cache');
+
+        echo $blade->make($file, $data);
+        return;
+    }
+}
+
+if (!function_exists('redirect')) {
+    function redirect($location)
+    {
+        header("location: $location");
+    }
+}
+if (!function_exists('back')) {
+    function back()
+    {
+        header("location: ../");
     }
 }
 
@@ -89,3 +105,8 @@ if (!function_exists('mix')) {
     }
 }
 
+if (!function_exists('incl')) {
+    function incl($html)
+    {
+    }
+}

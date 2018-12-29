@@ -5,9 +5,9 @@ use ZL\Model;
 
 class Home extends Model
 {
-    private $DB;
+    private $_db;
     public function __construct()
     {
-        $this->DB = new Model;
+        $this->_db = new Model;
     }
 }
