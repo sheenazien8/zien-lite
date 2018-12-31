@@ -1,4 +1,4 @@
-# ZienFramework();
+# ZienFramework
 ZienFramework or zien lite framework is a mini MVC for manage small application, zien lite can give you speed and fun when you coding with this framework
 
 ## Instalation
