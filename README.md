@@ -8,7 +8,7 @@ copy file `.env.example` and rename to `.env`
 
 ## Configuration
 open file .env and fill in the file according to your settings
-
+```
 > APP_NAME=<name_project>
 > APP_DEBUG=true
 > DB_CONNECTION=true <for allow database connection>
@@ -17,6 +17,7 @@ open file .env and fill in the file according to your settings
 > DB_USER=<dbuser>
 > DB_PASSWORD=<dbpassword>
 > DB_NAME=<dbname>
+```
 
 ## Documentation
 
