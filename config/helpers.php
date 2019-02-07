@@ -74,7 +74,7 @@ if (!function_exists('mix')) {
      *
      * @throws \Exception
      */
-    function mix($path, $manifestDirectory = '')
+    function mix($path, $manifestDirectory = 'public/')
     {
         static $manifest;
         $publicFolder = '/public';
