@@ -31,7 +31,5 @@
             "url": "https://github.com/sheenazien8/zien-lite",
             "prfrence" : "master"
         }
-    ],
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    ]
 }
