@@ -29,7 +29,7 @@
         {
             "type": "vcs",
             "url": "https://github.com/sheenazien8/zien-lite",
-            "prfrence" : "master"
+            "preference" : "master"
         }
     ],
     "minimum-stability": "dev",
