@@ -6,15 +6,17 @@ if (!function_exists('dd')) {
         $args = func_get_args();
         foreach ($args as $arg) {
             if (is_array($arg)) {
-                echo '<pre>';
+                echo '<pre style="background-color: #f7f7f7; padding: 2px">';
                 print_r($arg);
                 echo '</pre>';
-                echo '<hr>';
+            } elseif (is_object($arg)) {
+                echo '<pre style="background-color: #f7f7f7; padding: 2px">';
+                var_dump($arg);
+                echo '</pre>';
             }else {
-                echo '<pre>';
+                echo '<pre style="background-color: #f7f7f7; padding: 2px">';
                 echo $arg;
                 echo '</pre>';
-                echo '<hr>';
             }
         }
         die();
@@ -50,7 +52,15 @@ if (!function_exists('view')) {
         return;
     }
 }
+if (!function_exists('abort')) {
+    function abort($file, $data = [])
+    {
+        $blade = new Jenssegers\Blade\Blade('../resources/views/', '../public/storage/cache');
 
+        echo $blade->make($file, $data);
+        return;
+    }
+}
 if (!function_exists('redirect')) {
     function redirect($location)
     {
@@ -61,6 +71,19 @@ if (!function_exists('back')) {
     function back()
     {
         header("location: ../");
+    }
+}
+
+if (!function_exists('asset')) {
+    function asset($file)
+    {
+        return $file;
+    }
+}
+
+if (!function_exists('url')){
+    function url($url){
+        return $url;
     }
 }
 
