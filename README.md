@@ -1,5 +1,5 @@
-# ZienFramework
-ZienFramework or zien lite framework is a mini MVC for manage small application, zien lite can give you speed and fun when you coding with this framework
+# Zien Boilerplate
+Zien Boilerplate or zien lite framework is a mini MVC for manage small application, zien lite gives you a different experience when you've finished the lesson on PHP Object Oriented Programming
 
 ## Instalation
 composer create-project zien/zien-lite <project_name>
@@ -20,6 +20,5 @@ open file .env and fill in the file according to your settings
 ```
 
 ## Documentation
-
 
 ## Thanks to
