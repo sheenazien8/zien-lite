@@ -1,6 +1,6 @@
 {
     "name": "zien/zien-lite",
-    "description": "Zien Lite Framework",
+    "description": "Php OOP Boilerplate",
     "keywords": ["mvc", "framework", "lite"],
     "license": "MIT",
     "type": "project",
