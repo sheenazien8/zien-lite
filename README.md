@@ -2,7 +2,7 @@
 Zien Boilerplate or zien lite framework is a mini MVC for manage small application, zien lite gives you a different experience when you've finished the lesson on PHP Object Oriented Programming
 
 ## Instalation
-composer create-project zien/zien-lite <project_name>
+composer create-project sheenazien8/zien-lite <project_name>
 
 copy file `.env.example` and rename to `.env`
 
